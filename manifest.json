@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "薪跳 - 上班摸鱼激励器",
+  "version": "1.3.0",
+  "description": "实时显示工作收入增长，让摸鱼更有动力！每分钟都有庆祝，老板来了一键隐藏。",
+  "author": "牛马觉醒工作室",
+  
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "薪跳 - 查看今日收入",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  
+  "permissions": [
+    "storage"
+  ],
+  
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+} 

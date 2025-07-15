@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>薪跳 - 上班时间财富可视化器</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <!-- 背景粒子效果 -->
+    <div id="particles"></div>
+    
+    <!-- 主容器 -->
+    <div class="container">
+        <!-- 顶部控制栏 -->
+        <div class="top-bar">
+            <div class="app-title">薪跳 💰</div>
+            <div class="controls">
+                <button id="settingsBtn" class="control-btn" title="设置">⚙️</button>
+                <button id="themeBtn" class="control-btn" title="切换主题">🎨</button>
+                <button id="soundBtn" class="control-btn" title="音效开关">🔕</button>
+                <button id="testCelebrationBtn" class="control-btn" title="测试庆祝效果">🎉</button>
+            </div>
+        </div>
+
+        <!-- 主要内容区域 -->
+        <div class="main-content">
+            <!-- 当前收入显示 -->
+            <div class="earnings-display">
+                <div class="earnings-label">今日已赚取</div>
+                <div class="earnings-amount" id="earningsAmount">¥0.00</div>
+                <div class="earnings-animation" id="earningsAnimation"></div>
+                <div class="work-status" id="workStatus">准备开始工作</div>
+            </div>
+
+            <!-- 统计信息 -->
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value" id="workTime">00:00:00</div>
+                    <div class="stat-label">工作时长</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="hourlyRate">¥0/h</div>
+                    <div class="stat-label">时薪</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="dailyTarget">¥0</div>
+                    <div class="stat-label">今日目标</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="efficiency">0%</div>
+                    <div class="stat-label">效率</div>
+                </div>
+            </div>
+
+            <!-- 里程碑提示 -->
+            <div class="milestone" id="milestone" style="display: none;">
+                <div class="milestone-content">
+                    <div class="milestone-icon">🎉</div>
+                    <div class="milestone-text">恭喜达成 ¥<span id="milestoneAmount">0</span> 收入！</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 快速操作 -->
+        <div class="quick-actions">
+            <button id="bossKey" class="boss-key">🚨 老板键</button>
+            <button id="openFullPage" class="full-page-btn">📱 打开完整页面</button>
+        </div>
+    </div>
+
+    <!-- 设置面板 -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>设置配置</h3>
+                <button class="close-btn" id="closeSettings">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="salaryType">薪资类型：</label>
+                    <select id="salaryType">
+                        <option value="monthly">月薪</option>
+                        <option value="yearly">年薪</option>
+                        <option value="hourly">时薪</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="salaryAmount">薪资金额：</label>
+                    <input type="number" id="salaryAmount" placeholder="请输入薪资数额" min="0" step="0.01">
+                    <span class="currency">¥</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="workDays">每周工作天数：</label>
+                    <input type="number" id="workDays" value="5" min="1" max="7">
+                    <span class="unit">天</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="workHours">每日工作时长：</label>
+                    <input type="number" id="workHours" value="8" min="1" max="24" step="0.5">
+                    <span class="unit">小时</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="startTime">上班时间：</label>
+                    <input type="time" id="startTime" value="09:00">
+                </div>
+
+                <div class="form-group">
+                    <label for="endTime">下班时间：</label>
+                    <input type="time" id="endTime" value="18:00">
+                </div>
+
+                <div class="form-group">
+                    <label for="theme">主题风格：</label>
+                    <select id="theme">
+                        <option value="money">金币雨</option>
+                        <option value="cash">钞票飞舞</option>
+                        <option value="digital">数字货币</option>
+                        <option value="minimal">极简</option>
+                        <option value="retro">复古收银机</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button id="saveSettings" class="btn btn-primary">保存设置</button>
+                    <button id="resetSettings" class="btn btn-secondary">恢复默认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 庆祝效果容器 -->
+    <div id="confetti-container"></div>
+    <div id="fireworks-container"></div>
+
+    <script src="popup.js"></script>
+</body>
+</html> 
